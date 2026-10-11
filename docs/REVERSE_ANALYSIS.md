@@ -14,15 +14,15 @@
 - `kernel::Session + 0x00`：`std::string username`（MSVC `std::string` 布局：`+0x00` 为 16 字节 SSO 缓冲区或堆指针，`+0x10` 为 `size`，`+0x18` 为 `capacity`）。
 - `kernel::Session + 0x185` (`389` 字节)：会话标志位（`bit 3 = 0x08` 表示聚合盒子自身）。
 - `kernel::Session + 0x190` (`400` 字节)：`uint32_t brand_sub_type`：
-  - `0`：订阅号（公众号，`brandsessionholder` 的子会话）
-  - `1`：服务号（`brandservicesessionholder` 的子会话）
+  - `0`：订阅号盒子 (`brandsessionholder`) 的子会话
+  - `1`：服务号盒子 (`brandservicesessionholder`) 的子会话
 
 ### 1.2 关键函数地址表（基于 `Weixin.dll` `4.1.15.51`，`ImageBase = 0x180000000`）
 
 | 函数语义 | VA | RVA | 说明 |
 | :--- | :--- | :--- | :--- |
 | `Session::GetUserName` | `0x180083820` | `0x0083820` | `mov rax, rcx; ret`（返回 `&session->username`） |
-| `IsBrandOrServiceContact` | `0x180BC45C0` | `0x0BC45C0` | 排除 `"weixin"`，检查 `"gh_"` 前缀或公众号联系人属性 |
+| `IsBrandServiceContact` | `0x180BC45C0` | `0x0BC45C0` | 排除 `"weixin"`，检查 `"gh_"` 前缀或服务号联系人属性 |
 | `IsBrandSessionHolder` | `0x180BC4CF0` | `0x0BC4CF0` | 判断 `username == "brandsessionholder"`（订阅号盒子） |
 | `IsBrandServiceSessionHolder` | `0x180BC4F20` | `0x0BC4F20` | 判断 `username == "brandservicesessionholder"`（服务号盒子） |
 | `IsConversationBox` | `0x180BC5610` | `0x0BC5610` | 判断 `username == "conversationboxservice"`（折叠群聊盒子） |
@@ -52,7 +52,7 @@
 ```asm
 ; 检查是否为服务号子会话 (0x18195D5C0)
 18195d5c0: movq  %rsi, %rcx
-18195d5c3: callq 0x180bc45c0       ; IsBrandOrServiceContact(session->username)
+18195d5c3: callq 0x180bc45c0       ; IsBrandServiceContact(session->username)
 18195d5c8: testb %al, %al
 18195d5ca: je    0x18195d5fc
 18195d5cc: movq  %rsi, %rcx
@@ -76,7 +76,7 @@
 185ff6a52: 74 16                       je    0x185ff6a6b       ; 若不是服务号盒子 -> 跳到 0x185ff6a6b 加载“删除聊天后，聊天记录也将被清空。”
 185ff6a54: 48 8d 15 9d c1 8f 02        leaq  0x188ef2bf8(%rip), %rdx ; "" (空字符串)
 ```
-注意 `0x185FF6A53`（指令起始于 `0x185FF6A53: 74 16`）故意将服务号盒子的弹窗副标题设为了空字符串 `""`。
+注意 `0x185FF6A53`（指令 `74 16`）故意将服务号盒子的弹窗副标题设为了空字符串 `""`。
 
 ### 2.3 为什么点击确认后子会话没有被删除？
 在 `ChatSessionCellViewModel::Delete` (`VA 0x181C5CE10`) 中：
@@ -135,7 +135,7 @@ call 0x182557D20                        ; 1. IsBrandServiceSubSession(rcx): 非�
 test al, al
 jz   .ret
 mov  rcx, r14                           ; r14 = 当前遍历的 Session*
-call 0x180BC45C0                        ; 2. IsBrandOrServiceContact(rcx): 确保是 gh_ 等公众号/服务号
+call 0x180BC45C0                        ; 2. IsBrandServiceContact(rcx): 确保是 gh_ 服务号会话
 
 .ret:
 add  rsp, 0x28
