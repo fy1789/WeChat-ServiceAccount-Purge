@@ -3,5 +3,9 @@ __pycache__/
 *$py.class
 *.bak
 *.dmp
+*.dll
+*.exe
+*.pdb
+*.zip
 .vscode/
 .idea/

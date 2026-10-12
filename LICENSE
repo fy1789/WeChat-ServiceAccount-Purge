@@ -1,21 +1,53 @@
-MIT License
+Source-Available, All Rights Reserved
+=====================================
 
-Copyright (c) 2026
+Copyright (c) 2026. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+本项目采用「源码公开、权利保留」（Source-Available / All Rights Reserved）授权模式，
+**不是**开源许可证，与 MIT / Apache-2.0 / BSD / GPL 等任何开源协议均不兼容、亦不
+构成其下的授权。公开发布本仓库的唯一目的，是展示逆向工程分析方法与个人客户端
+使用体验优化的技术思路，**本身不构成对使用、复制、修改或分发行为的授权**。
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+任何未在本文件中被明确授予的权利，均由著作权人保留。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+--------------------------------------------------------------------------
+一、允许（Permitted）
+
+1. 出于个人学习、研究与技术评估目的，在本地阅读、编译并运行本项目源码；
+2. 在保留作者署名与本仓库出处链接的前提下，引用本仓库中简短的技术说明或链接。
+
+--------------------------------------------------------------------------
+二、禁止（Prohibited，未经著作权人事先书面许可）
+
+1. **再分发**：不得以任何形式重新分发、转载、镜像、打包、二次发布本项目的源码或
+   其衍生物，包括但不限于上传至其他代码托管平台、网盘、论坛、软件站、应用商店、
+   聊天群组，或以任何渠道向第三方提供下载或副本；
+2. **发布衍生版本**：不得公开发布本项目的修改版、移植版、汉化版、集成版，或任何
+   基于本项目全部或部分代码、补丁数据、分析结论构建的源码包或二进制发布物；
+3. **商业使用**：不得将本项目及其衍生物用于任何商业目的，包括但不限于出售、租赁、
+   付费分发、捆绑销售、以付费服务形式提供；
+4. **移除标识**：不得删除、隐藏或修改本授权文件、源码及文档中的著作权声明与出处链接。
+
+--------------------------------------------------------------------------
+三、关于平台 Fork 机制的说明
+
+GitHub 平台自身的 Fork 功能受 GitHub 服务条款约束，本授权无法在平台机制层面阻止
+对公开仓库的 Fork。但 Fork 行为**不构成**在 GitHub 之外任何渠道再分发本项目的许可；
+著作权人保留就未经授权的副本分发行为主张权利、要求移除的权利。
+
+--------------------------------------------------------------------------
+四、第三方标识
+
+本项目中提及的任何第三方软件名称、商标、著作权均归其各自权利人所有。本项目与
+上述权利人之间不存在任何隶属、赞助、授权、认可或背书关系。
+
+--------------------------------------------------------------------------
+五、无担保与责任限制
+
+本软件按「现状」（AS IS）提供，不附带任何明示或默示的担保，包括但不限于对适销性、
+特定用途适用性及不侵权的担保。在任何情况下，作者或著作权人均不对因本软件或本软件
+的使用或其他交易所产生的任何索赔、损害或其他责任承担责任，无论是在合同诉讼、
+侵权行为或其他方面。
+
+--------------------------------------------------------------------------
+如需再分发或商业使用授权，请联系著作权人获取事先书面许可。
